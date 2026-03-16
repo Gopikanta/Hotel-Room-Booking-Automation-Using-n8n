@@ -1,0 +1,140 @@
+{
+  "name": "Form Submission",
+  "nodes": [
+    {
+      "parameters": {
+        "formTitle": "Hotel room booking form ",
+        "formDescription": "What room do you like?",
+        "formFields": {
+          "values": [
+            {
+              "fieldLabel": "Name",
+              "placeholder": "Type your name here"
+            },
+            {
+              "fieldLabel": "Room preference",
+              "fieldType": "dropdown",
+              "fieldOptions": {
+                "values": [
+                  {
+                    "option": "Single"
+                  },
+                  {
+                    "option": "Double"
+                  },
+                  {
+                    "option": "Delux"
+                  }
+                ]
+              },
+              "requiredField": true
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.formTrigger",
+      "typeVersion": 2.5,
+      "position": [
+        0,
+        0
+      ],
+      "id": "2008bf97-b814-4f24-bd20-9a13eb103a3b",
+      "name": "On form submission",
+      "webhookId": "c9d4ad7f-f813-41d7-9e2f-fdc1174571fb"
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1ffju_7KYtxqaVxUa2y6uqki1s7LjTkrhe3XwYLv7y4U",
+          "mode": "list",
+          "cachedResultName": "My first n8n ",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ffju_7KYtxqaVxUa2y6uqki1s7LjTkrhe3XwYLv7y4U/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1ffju_7KYtxqaVxUa2y6uqki1s7LjTkrhe3XwYLv7y4U/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Name": "={{ $json.Name }}",
+            "Room preference": "={{ $json['Room preference'] }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Name",
+              "displayName": "Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Room preference",
+              "displayName": "Room preference",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        208,
+        0
+      ],
+      "id": "f67b8189-8f0e-40eb-a392-4761036c5e55",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "DaLfmLcjVNN8h2fR",
+          "name": "Google Sheets account 2"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "On form submission": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "28ee8563-cc3d-42e1-b2c9-bef451c2c718",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "5a7e2ebd87fc94a04c1d7175e58d2d7be4433ab9631f82b53b045ca942e51f46"
+  },
+  "id": "uWTkap7lrUSjjdY4",
+  "tags": []
+}
